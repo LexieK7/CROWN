@@ -1,0 +1,29 @@
+dino:
+  head_n_prototypes: 131072
+  head_bottleneck_dim: 384
+ibot:
+  separate_head: true
+  head_n_prototypes: 131072
+student:
+  arch: vit_large
+  patch_size: 16
+  drop_path_rate: 0.4
+  ffn_layer: swiglufused
+  block_chunks: 4
+teacher:
+  momentum_teacher: 0.994
+train:
+  dataset_path: ImageNet:split=TRAIN:root=/data1/zhengke/Cytology/cytology_patch_ImageNetLike:extra=/data1/zhengke/Cytology/cytology_patch_ImageNetLike
+  split_length: 10367536
+  batch_size_per_gpu: 48
+  centering: sinkhorn_knopp
+optim:
+  epochs: 4000
+  base_lr: 1.0e-04  # base lr for bs=1024
+  warmup_epochs: 40
+  weight_decay_end: 0.2
+  layerwise_decay: 1.0
+
+crops:
+  local_crops_size: 96
+  
