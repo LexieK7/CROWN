@@ -1,7 +1,64 @@
 # CROWN
 A Universal Visual Foundation Model for Computational Cytopathology.
 
+The pretrained COIN model weights are available on [Hugging Face](https://huggingface.co/LexieK/Crown).  
+You can request access and download the weights directly from the link above.
 
+
+##  Getting started
+
+Clone this repo:
+
+```
+https://github.com/LexieK7/CROWN.git
+cd CROWN
+
+conda env create -f conda-extras.yaml
+
+OR
+
+pip install -r requirements.txt -r requirements-extras.txt
+
+```
+
+## Quick usage
+
+After downloading our model weights：
+
+```
+from models.vision_transformer import vit_large
+import torch
+
+model = vit_large(
+    patch_size=16,
+    img_size=224,
+    init_values=1.0,
+    block_chunks=4,
+    ffn_layer="swiglufused",
+)
+
+state_dict = torch.load("CROWN.pth", map_location="cpu")
+model.load_state_dict(state_dict, strict=True)
+model.eval()
+
+```
+
+Used for feature extraction:
+
+```
+feat = model.forward_features(img)["x_norm_clstoken"]
+```
+
+## Basic Environment
+    Linux (Tested on Ubuntu 20.04)
+    
+    NVIDIA GPU (Tested on A100 ) with CUDA 12.8
+    
+    Python (3.9)
+    
+    Torch (2.0.1)
+    
+    torchvision (0.15.0)
 
 ## Citation
 If you find our work useful in your research or if you use parts of this code please consider citing our paper:
