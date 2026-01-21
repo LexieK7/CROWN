@@ -1,6 +1,15 @@
 # CROWN
 A Universal Visual Foundation Model for Computational Cytopathology.
 
+
+CROWN is a visual foundation model pretrained on over 10 million cytology images.  
+It provides transferable and annotation-free feature representations for a wide range of cytological image analysis tasks.
+
+### Highlights
+- Pretrained with a DINOv2-style self-supervised framework on large-scale cytology data
+- Strong transferability across classification, retrieval, segmentation, detection, and slide-level weakly supervised tasks
+- Robust under significant domain shifts, serving as a single scalable backbone for cytology research
+
 The pretrained COIN model weights are available on [Hugging Face](https://huggingface.co/LexieK/Crown).  
 You can request access and download the weights directly from the link above.
 
