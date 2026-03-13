@@ -13,7 +13,7 @@ It provides transferable and annotation-free feature representations for a wide 
 The pretrained COIN model weights are available on [Hugging Face](https://huggingface.co/LexieK/Crown).  
 You can request access and download the weights directly from the link above.
 
-
+![CROWN Overview](Crown.png)
 
 
 ## Installation Guide
