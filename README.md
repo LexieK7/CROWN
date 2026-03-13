@@ -14,23 +14,83 @@ The pretrained COIN model weights are available on [Hugging Face](https://huggin
 You can request access and download the weights directly from the link above.
 
 
-##  Getting started
 
-Clone this repo:
+
+## Installation Guide
+
+CROWN is built on the DINOv2 architecture and only requires standard PyTorch dependencies to run.
+The repository supports Linux, Windows, and macOS (Intel and Apple Silicon).
+
+Some optional libraries (e.g., xformers, mmcv, cuml) rely on CUDA and may not be available on macOS.
+These libraries are not required for running the pretrained model.
+
+### 1. Clone the repository
 
 ```
 https://github.com/LexieK7/CROWN.git
 cd CROWN
-
-conda env create -f conda-extras.yaml
-
-OR
-
-pip install -r requirements.txt -r requirements-extras.txt
-
 ```
 
-## Quick usage
+### 2. Linux Installation (CUDA GPU)
+
+Tested on Ubuntu 20.04 + CUDA 12.x
+
+```
+conda create -n crown python=3.9
+conda activate crown
+```
+
+### 3. Install dependencies (cross-platform)
+
+Install the minimal dependencies:
+```
+pip install -r requirements.txt
+```
+
+### 4 Optional CUDA acceleration (Linux GPU only)
+
+For CUDA environments, optional acceleration libraries can be installed.
+```
+pip install xformers
+pip install --extra-index-url https://pypi.nvidia.com cuml-cu11
+```
+
+### macOS Installation
+
+macOS does not support CUDA.
+Instead, PyTorch uses the MPS backend for GPU acceleration.
+
+Install dependencies directly:
+
+```
+pip install \
+torch \
+torchvision \
+numpy \
+tqdm \
+pillow \
+scikit-learn \
+einops \
+timm \
+opencv-python \
+matplotlib \
+transformers
+```
+Optional:
+
+```
+pip install faiss-cpu
+```
+
+Verify MPS support:
+```
+import torch
+print(torch.backends.mps.is_available())
+```
+
+If ```True```, the Apple GPU is available.
+
+## Quick Start
 
 After downloading our model weights：
 
@@ -58,16 +118,32 @@ Used for feature extraction:
 feat = model.forward_features(img)["x_norm_clstoken"]
 ```
 
-## Basic Environment
-    Linux (Tested on Ubuntu 20.04)
-    
-    NVIDIA GPU (Tested on A100 ) with CUDA 12.8
-    
-    Python (3.9)
-    
-    Torch (2.0.1)
-    
-    torchvision (0.15.0)
+## Tested Environment
+
+The model was trained using:
+```
+Ubuntu 20.04
+Python 3.9
+PyTorch 2.0.1
+torchvision 0.15
+CUDA 12.8
+NVIDIA A100 GPU
+
+```
+
+A working environment used for our experiments includes:
+```
+torch 2.0.1
+torchvision 0.15.0
+xformers 0.0.21
+transformers 4.52.4
+timm 0.9.8
+scikit-learn 1.6.1
+opencv-python 4.12
+numpy 1.26
+
+```
+
 
 ## Citation
 If you find our work useful in your research or if you use parts of this code please consider citing our paper:
@@ -77,7 +153,7 @@ If you find our work useful in your research or if you use parts of this code pl
 ```
 
 
-If you use the original DINOv2 model included in this repo, please cite the following papers.
+If you use the original DIN modOv2el included in this repo, please cite the following papers.
 
 ```
 @article{Oquab2023DINOv2LR,
