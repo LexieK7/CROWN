@@ -90,6 +90,30 @@ print(torch.backends.mps.is_available())
 
 If ```True```, the Apple GPU is available.
 
+### Windows Installation
+
+CROWN can also run on Windows with CPU or CUDA GPU.
+
+Create environment：
+```
+conda create -n crown python=3.9
+conda activate crown
+```
+Install dependencies：
+```
+pip install -r requirements.txt
+```
+Optional CUDA acceleration (Windows GPU)
+If CUDA is available, you may optionally install acceleration libraries:
+
+```
+pip install xformers
+```
+
+Note that some RAPIDS libraries (e.g., cuml-cu11) may not be fully supported on Windows.
+These libraries are optional and not required for using the pretrained CROWN model.
+
+
 ## Quick Start
 
 After downloading our model weights：
@@ -118,6 +142,29 @@ Used for feature extraction:
 feat = model.forward_features(img)["x_norm_clstoken"]
 ```
 
+
+## Image Preprocessing Example
+
+```
+from PIL import Image
+import torchvision.transforms as T
+import torch
+
+img = Image.open("example.png").convert("RGB")
+
+transform = T.Compose([
+    T.Resize(224),
+    T.CenterCrop(224),
+    T.ToTensor()
+])
+
+img = transform(img).unsqueeze(0)
+
+feat = model.forward_features(img)["x_norm_clstoken"]
+print(feat)
+```
+
+
 ## Tested Environment
 
 The model was trained using:
@@ -144,6 +191,29 @@ numpy 1.26
 
 ```
 
+
+
+## Troubleshooting
+```
+1 Installation fails on macOS
+
+macOS does not support CUDA libraries such as:
+
+xformers
+cuml-cu11
+
+These libraries are optional and should not be installed on macOS.
+
+Please follow the macOS installation instructions above.
+
+2 PyTorch cannot detect GPU
+
+Run:
+
+import torch
+print(torch.cuda.is_available())
+print(torch.backends.mps.is_available())
+```
 
 ## Citation
 If you find our work useful in your research or if you use parts of this code please consider citing our paper:
