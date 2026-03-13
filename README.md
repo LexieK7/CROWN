@@ -164,6 +164,55 @@ feat = model.forward_features(img)["x_norm_clstoken"]
 print(feat)
 ```
 
+## Linear Evaluation Example
+
+This repository provides an example script to evaluate the CROWN using linear probing.
+The backbone is frozen and a linear classifier is trained on extracted features using 5-fold cross validation.
+
+
+### Dataset Structure
+The evaluation script expects the dataset to follow the PyTorch ImageFolder format.
+```
+dataset_root/
+    task1/
+        class1/
+            img1.png
+            img2.png
+        class2/
+            img3.png
+            img4.png
+
+    task2/
+        class1/
+        class2/
+        class3/
+```
+Each task folder represents a classification problem, and the script will automatically evaluate all tasks.
+Edit the following variables in the script:
+
+```
+base_path = "DATASET PATH"
+model_path = "MODEL PATH"
+save_path = "OUTPUT PATH"
+```
+Example:
+```
+base_path = "data/benchmark"
+model_path = "weights/CROWN.pth"
+save_path = "results/linear_eval.xlsx"
+```
+
+Then run:
+```
+python linear_eval.py
+```
+
+This script is provided as a minimal example to demonstrate how to evaluate the CROWN backbone using standard linear probing protocols.
+
+
+### Running Linear Evaluation
+
+
 
 ## Tested Environment
 
