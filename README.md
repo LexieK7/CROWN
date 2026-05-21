@@ -274,7 +274,7 @@ If you find our work useful in your research or if you use parts of this code pl
 ```
 
 
-If you use the original DIN modOv2el included in this repo, please cite the following papers.
+If you use the original DINOv2 model included in this repo, please cite the following papers.
 
 ```
 @article{Oquab2023DINOv2LR,
