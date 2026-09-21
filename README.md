@@ -275,12 +275,13 @@ If you find our work useful in your research or if you use parts of this code pl
 
 ```
 @article{Zheng2026Universal,
-title = {A universal visual foundation model for computational cytopathology},
-author = {Zheng, X. and Zheng, K. and Wang, J. and others},
-journal = {Nature Cancer},
-year = {2026},
-doi = {10.1038/s43018-026-01240-0},
-url = {https://doi.org/10.1038/s43018-026-01240-0} }
+  title = {A universal visual foundation model for computational cytopathology},
+  author = {Zheng, X. and Zheng, K. and Wang, J. and others},
+  journal = {Nature Cancer},
+  year = {2026},
+  doi = {10.1038/s43018-026-01240-0},
+  url = {https://doi.org/10.1038/s43018-026-01240-0}
+}
 ```
 
 
