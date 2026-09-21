@@ -15,7 +15,11 @@ Together with our previously released cytology generative foundation model [COIN
 The pretrained CROWN model weights are available on [Hugging Face](https://huggingface.co/LexieK/Crown).  
 You can request access and download the weights directly from the link above.
 
+We are thrilled to announce that our work, “A Universal Visual Foundation Model for Computational Cytopathology,” has been accepted and published in Nature Cancer! 🎉
+
 ![CROWN Overview](Crown.png)
+
+
 
 
 ## Installation Guide
@@ -270,7 +274,13 @@ print(torch.backends.mps.is_available())
 If you find our work useful in your research or if you use parts of this code please consider citing our paper:
 
 ```
-
+@article{Zheng2026Universal,
+title = {A universal visual foundation model for computational cytopathology},
+author = {Zheng, X. and Zheng, K. and Wang, J. and others},
+journal = {Nature Cancer},
+year = {2026},
+doi = {10.1038/s43018-026-01240-0},
+url = {https://doi.org/10.1038/s43018-026-01240-0} }
 ```
 
 
